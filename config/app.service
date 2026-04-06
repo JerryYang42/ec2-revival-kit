@@ -1,0 +1,16 @@
+# app.service — copy to /etc/systemd/system/app.service after recovery
+# Then run: sudo systemctl daemon-reload && sudo systemctl enable --now app
+
+[Unit]
+Description=My Application
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/app
+ExecStart=/usr/bin/node server.js   # TODO: adjust for your stack
+Restart=always
+EnvironmentFile=/home/ubuntu/app/.env
+
+[Install]
+WantedBy=multi-user.target

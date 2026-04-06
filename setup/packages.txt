@@ -1,0 +1,14 @@
+# packages.txt — one package per line, installed by bootstrap.sh via apt
+# TODO: add every package your server needs
+
+git
+curl
+wget
+unzip
+nginx
+nodejs
+npm
+certbot
+python3-certbot-nginx
+ufw
+fail2ban

@@ -1,0 +1,18 @@
+# install.yml — Ansible playbook (optional, used by bootstrap.sh if Ansible is available)
+# Run manually with: ansible-playbook -i "localhost," -c local setup/install.yml
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ lookup('file', 'packages.txt').splitlines() | reject('match', '^#') | list }}"
+
+    # TODO: add tasks for your app setup (clone repo, install deps, etc.)

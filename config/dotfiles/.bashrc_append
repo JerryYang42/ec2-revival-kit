@@ -1,0 +1,6 @@
+# .bashrc additions — append to ~/.bashrc after recovery
+# TODO: add your aliases and env exports here
+
+export EDITOR=vim
+alias ll='ls -lah'
+alias gs='git status'
